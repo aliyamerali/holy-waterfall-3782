@@ -47,7 +47,7 @@ RSpec.describe 'Airlin Show Page', type: :feature do
   end
 
   it 'does not show passengers 17 and under' do
-    expect(page).to_not have_content(@pass3b.name)
-    expect(page).to_not have_content(@pass3b.age)
+    expect(page).to_not have_content(@pass1c.name)
+    expect(page).to_not have_content(@pass2c.age)
   end
 end

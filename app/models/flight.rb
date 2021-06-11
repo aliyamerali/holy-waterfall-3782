@@ -9,7 +9,7 @@ class Flight < ApplicationRecord
 
   def self.unique_adult_passengers
     joins(:passengers)
-    .select('flights.*, passengers.name as passenger_name, passengers.age as passenger_age')
+    .select('passengers.*')
     .where('passengers.age >= ?', 18)
     .distinct
   end

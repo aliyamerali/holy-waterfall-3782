@@ -33,9 +33,9 @@ RSpec.describe Flight, type: :model do
 
       output = @jetblue.flights.unique_adult_passengers
       expect(output.pluck(:id).length).to eq(3)
-      expect(output.order('passenger_age ASC').first.passenger_name).to eq(@pass1a.name)
-      expect(output.order('passenger_age ASC').second.passenger_name).to eq(@pass3a.name)
-      expect(output.order('passenger_age ASC').last.passenger_name).to eq(@pass2a.name)
+      expect(output.order('passengers.age ASC').first.id).to eq(@pass1a.id)
+      expect(output.order('passengers.age ASC').second.id).to eq(@pass3a.id)
+      expect(output.order('passengers.age ASC').last.id).to eq(@pass2a.id)
     end
   end
 end
