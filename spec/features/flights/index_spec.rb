@@ -119,4 +119,30 @@ RSpec.describe 'Flights Index Page', type: :feature do
       expect(page).to_not have_content(@pass5a.name)
     end
   end
+
+  it 'shows a link to remove a passenger from a flight' do
+    save_and_open_page
+    within(".pass-#{@pass1a.id}") do
+      expect(page).to have_button("Remove Passenger")
+    end
+    within(".pass-#{@pass2a.id}") do
+      expect(page).to have_button("Remove Passenger")
+    end
+    within(".pass-#{@pass3a.id}") do
+      expect(page).to have_button("Remove Passenger")
+    end
+    within(".pass-#{@pass4a.id}") do
+      expect(page).to have_button("Remove Passenger")
+    end
+    within(".pass-#{@pass5a.id}") do
+      expect(page).to have_button("Remove Passenger")
+    end
+    within(".pass-#{@pass6a.id}") do
+      expect(page).to have_button("Remove Passenger")
+    end
+  end
+
+  it 'clicking the remove link returns flight index page without that passenger for the flight'
+
+  it 'clicking the remove link does notdelete the passenger record'
 end
