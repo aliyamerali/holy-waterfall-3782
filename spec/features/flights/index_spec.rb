@@ -77,7 +77,6 @@ RSpec.describe 'Flights Index Page', type: :feature do
   end
 
   it 'shows the names of each flights passengers' do
-    save_and_open_page
     within(".flight-#{@flight1.id}") do
       expect(page).to have_content(@pass1a.name)
       expect(page).to have_content(@pass1b.name)
