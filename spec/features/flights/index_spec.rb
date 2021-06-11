@@ -26,9 +26,6 @@ RSpec.describe 'Flights Index Page', type: :feature do
     @pass4a = @flight4.passengers.create!(name: "Lill", age: 67)
     @pass4b = @flight4.passengers.create!(name: "Han", age: 12)
 
-    @pass4a = @flight4.passengers.create!(name: "Gill", age: 87)
-    @pass4b = @flight4.passengers.create!(name: "Pan", age: 45)
-
     @pass5a = @flight5.passengers.create!(name: "Jill", age: 80)
     @pass5b = @flight5.passengers.create!(name: "Tan", age: 36)
 
@@ -80,6 +77,7 @@ RSpec.describe 'Flights Index Page', type: :feature do
   end
 
   it 'shows the names of each flights passengers' do
+    save_and_open_page
     within(".flight-#{@flight1.id}") do
       expect(page).to have_content(@pass1a.name)
       expect(page).to have_content(@pass1b.name)
