@@ -19,6 +19,7 @@ RSpec.describe 'Airlin Show Page', type: :feature do
     #duplicate passengers
     Manifest.create!(flight: @flight1, passenger: @pass2a)
     Manifest.create!(flight: @flight3, passenger: @pass2a)
+    Manifest.create!(flight: @flight3, passenger: @pass1a)
 
     #non-adult passengers
     @pass1c = @flight1.passengers.create!(name: "Timmy", age: 12)
@@ -49,5 +50,10 @@ RSpec.describe 'Airlin Show Page', type: :feature do
   it 'does not show passengers 17 and under' do
     expect(page).to_not have_content(@pass1c.name)
     expect(page).to_not have_content(@pass2c.age)
+  end
+
+  it 'shows passengers ordered by count of flights' do
+    expect(@pass2a.name).to appear_before(@pass1a.name)
+    expect(@pass1a.name).to appear_before(@pass3a.name)
   end
 end

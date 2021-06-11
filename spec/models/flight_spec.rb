@@ -55,7 +55,7 @@ RSpec.describe Flight, type: :model do
       Manifest.create!(flight: @flight2, passenger: @pass1a)
 
       output = @jetblue.flights.unique_adult_passengers
-      expect(output.pluck(:id).length).to eq(3)
+      expect(output.length).to eq(3)
       expect(output.first.id).to eq(@pass2a.id)
       expect(output.second.id).to eq(@pass1a.id)
       expect(output.last.id).to eq(@pass3a.id)
