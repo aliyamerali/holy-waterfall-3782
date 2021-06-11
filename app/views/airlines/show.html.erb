@@ -3,6 +3,6 @@
 <h3>Adult Passengers: </h3>
 <ul>
   <% @passengers.each do |passenger| %>
-    <li><%= passenger.name %>, age: <%= passenger.age %></li>
+    <li><%= passenger.name %>, age: <%= passenger.age %>: <%= passenger.flight_count %> flights</li>
   <% end %>
 </ul>

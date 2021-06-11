@@ -9,8 +9,11 @@ class Flight < ApplicationRecord
 
   def self.unique_adult_passengers
     joins(:passengers)
-    .select('passengers.*')
+    .select('passengers.*, COUNT(flights.id) AS flight_count')
     .where('passengers.age >= ?', 18)
+    .group('passengers.id')
+    .order('flight_count DESC')
     .distinct
   end
+
 end
