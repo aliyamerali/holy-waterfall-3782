@@ -12,12 +12,9 @@ RSpec.describe 'Flights Index Page', type: :feature do
     @flight5 = @frontier.flights.create!(number: "9872", date: "09/05/20", departure_city: "Los Angeles", arrival_city: "Miami")
     @flight6 = @frontier.flights.create!(number: "2341", date: "09/15/20", departure_city: "Chicago", arrival_city: "Houston")
 
-    @pass1a = Passenger.create!(name: "Joe", age: 7)
-    Manifest.create(passenger: @pass1a, flight: @flight1)
-    @pass1b = Passenger.create!(name: "Sam", age: 23)
-    Manifest.create(passenger: @pass1b, flight: @flight1)
-    @pass1c = Passenger.create!(name: "Lin", age: 76)
-    Manifest.create(passenger: @pass1c, flight: @flight1)
+    @pass1a = @flight1.passengers.create!(name: "Joe", age: 7)
+    @pass1b = @flight1.passengers.create!(name: "Sam", age: 23)
+    @pass1c = @flight1.passengers.create!(name: "Lin", age: 76)
 
     @pass2a = @flight2.passengers.create!(name: "Jill", age: 98)
     @pass2b = @flight2.passengers.create!(name: "Tan", age: 66)
