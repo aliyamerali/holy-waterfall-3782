@@ -3,12 +3,16 @@
 <% @flights.each do |flight| %>
 <div class="flight-<%=flight.id%>">
   <h3>Flight Number: <%= flight.number %> with <%= flight.airline_name %></h3>
-  <p>Passengers:</p>
-  <ul>
+
+  <table>
+    <th>Passengers</th>
     <% flight.passengers.each do |passenger| %>
-      <li><%= passenger.name %></li>
+      <tr class="pass-<%=passenger.id%>">
+        <td><%= passenger.name %></td>
+        <td><%= button_to "Remove Passenger", flights_path, method: :patch, params: {pass_id: passenger.id, flight_id: flight.id}%></td>
+      </tr>
     <% end %>
-  </ul>
+  </table>
 </div>
 
 <% end %>
