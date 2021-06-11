@@ -7,4 +7,10 @@ class Flight < ApplicationRecord
     airline.name
   end
 
+  def self.unique_adult_passengers
+    joins(:passengers)
+    .select('flights.*, passengers.name as passenger_name, passengers.age as passenger_age')
+    .where('passengers.age >= ?', 18)
+    .distinct
+  end
 end
